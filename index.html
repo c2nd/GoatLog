@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مدونتي — أفكار ومقالات</title>
-<meta name="description" content="مدونة شخصية فيها مقالات وأفكار عن التقنية والتصميم والحياة.">
+<title>My Blog — Ideas & Essays</title>
+<meta name="description" content="A personal blog with short essays on technology, design, and everyday life.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f4f2ee; --surface:#ffffff; --text:#171614; --muted:#6b6660;
@@ -25,7 +25,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
   background:var(--bg); color:var(--text);
   line-height:1.75; font-size:16px;
   -webkit-font-smoothing:antialiased;
@@ -103,8 +103,8 @@ img{max-width:100%;display:block}
   margin-top:16px; font-size:.86rem; font-weight:500;
   color:var(--link);
 }
-.read-more::after{content:"←"; transition:transform .2s}
-.read-more:hover::after{transform:translateX(-4px)}
+.read-more::after{content:"→"; transition:transform .2s}
+.read-more:hover::after{transform:translateX(4px)}
 
 /* Ad slot */
 .ad-slot{
@@ -139,66 +139,66 @@ img{max-width:100%;display:block}
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="index.html" class="brand">مدونة<span>.</span></a>
+    <a href="index.html" class="brand">myblog<span>.</span></a>
     <nav class="nav">
-      <a href="index.html">الرئيسية</a>
-      <a href="#about">حول</a>
+      <a href="index.html">Home</a>
+      <a href="#about">About</a>
     </nav>
   </div>
 </header>
 
 <main>
   <section class="hero container">
-    <h1>أفكار ومقالات قصيرة،<br>بلغة واضحة وعقل منفتح.</h1>
-    <p>مساحة شخصية أكتب فيها عن التقنية والتصميم والحياة اليومية. محتوى أصلي، بلا ضجيج.</p>
+    <h1>Short essays,<br>clear language, open mind.</h1>
+    <p>A personal space where I write about technology, design, and everyday life. Original writing, no noise.</p>
   </section>
 
   <section class="container">
     <div class="section-title">
-      <h2>أحدث المقالات</h2>
-      <small>3 مقالات</small>
+      <h2>Latest posts</h2>
+      <small>3 posts</small>
     </div>
 
     <div class="post-list">
 
       <article class="post-card">
         <div class="post-meta">
-          <time datetime="2026-11-03">3 نوفمبر 2026</time>
+          <time datetime="2026-11-03">Nov 3, 2026</time>
           <span class="dot"></span>
-          <span>تقنية</span>
+          <span>Tech</span>
         </div>
-        <h3><a href="post-1.html">كيف تبني موقعاً آمناً بالكامل من هاتفك</a></h3>
-        <p>دليل عملي مختصر يشرح كيف يمكنك إنشاء موقع ثابت، نشره مجاناً، والربح منه دون الحاجة إلى حاسوب.</p>
-        <a href="post-1.html" class="read-more">اقرأ المزيد</a>
+        <h3><a href="post-1.html">How to build a secure website entirely from your phone</a></h3>
+        <p>A short practical guide on creating a static site, deploying it for free, and monetizing it — without ever touching a laptop.</p>
+        <a href="post-1.html" class="read-more">Read more</a>
       </article>
 
-      <!-- 🔽 AD SLOT — ضع كود Adsterra هنا 🔽 -->
+      <!-- 🔽 AD SLOT — paste your Adsterra code here 🔽 -->
       <div class="ad-slot" aria-hidden="true">
-        مساحة إعلانية
-        <!-- <script type="text/javascript"> ... كود Adsterra ... </script> -->
+        Advertisement
+        <!-- <script type="text/javascript"> ... Adsterra code ... </script> -->
       </div>
-      <!-- 🔼 نهاية مكان الإعلان 🔼 -->
+      <!-- 🔼 end ad slot 🔼 -->
 
       <article class="post-card">
         <div class="post-meta">
-          <time datetime="2026-11-01">1 نوفمبر 2026</time>
+          <time datetime="2026-11-01">Nov 1, 2026</time>
           <span class="dot"></span>
-          <span>تصميم</span>
+          <span>Design</span>
         </div>
-        <h3><a href="post-2.html">ألوان حيادية، هوية بصرية قوية</a></h3>
-        <p>لماذا تبدو بعض المدونات أنيقة رغم بساطتها؟ الفرق يكمن في اختيار لوحة ألوان محدودة واستخدام المساحات البيضاء بذكاء.</p>
-        <a href="post-2.html" class="read-more">اقرأ المزيد</a>
+        <h3><a href="post-2.html">Neutral colors, strong identity</a></h3>
+        <p>Why do some blogs feel elegant despite their simplicity? The answer lies in a limited palette and the smart use of white space.</p>
+        <a href="post-2.html" class="read-more">Read more</a>
       </article>
 
       <article class="post-card">
         <div class="post-meta">
-          <time datetime="2026-10-28">28 أكتوبر 2026</time>
+          <time datetime="2026-10-28">Oct 28, 2026</time>
           <span class="dot"></span>
-          <span>أفكار</span>
+          <span>Ideas</span>
         </div>
-        <h3><a href="post-3.html">الكتابة اليومية: أقل مما تظن، وأكثر مما تتخيل</a></h3>
-        <p>عشر دقائق من الكتابة كل صباح كافية لترتيب أفكارك واكتشاف ما تفكر فيه فعلاً. جرّبها لأسبوع وستلاحظ الفرق.</p>
-        <a href="post-3.html" class="read-more">اقرأ المزيد</a>
+        <h3><a href="post-3.html">Daily writing: less than you think, more than you imagine</a></h3>
+        <p>Ten minutes of writing every morning is enough to organize your thoughts and discover what you really think about. Try it for a week.</p>
+        <a href="post-3.html" class="read-more">Read more</a>
       </article>
 
     </div>
@@ -207,8 +207,8 @@ img{max-width:100%;display:block}
 
 <footer class="site-footer" id="about">
   <div class="container">
-    <a href="index.html" class="brand">مدونة<span>.</span></a>
-    <p>© 2026 جميع الحقوق محفوظة. صُنع بشغف، من هاتف فقط.</p>
+    <a href="index.html" class="brand">myblog<span>.</span></a>
+    <p>© 2026 All rights reserved. Made with care, from a phone only.</p>
   </div>
 </footer>
 
