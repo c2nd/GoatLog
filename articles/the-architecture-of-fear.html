@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b09">
+
+  <title>The Architecture of Fear — GoatLog</title>
+
+  <meta name="description" content="An exploration of how fear shapes human decisions, perception and behavior.">
+
+  <style>
+    :root {
+      --bg: #070b09;
+      --surface: #0d1511;
+      --green: #00ff9c;
+      --text: #e8f5ed;
+      --muted: #a0ada4;
+      --border: #1b3528;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    .container {
+      width: min(100% - 36px, 760px);
+      margin: auto;
+    }
+
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: var(--green);
+      font-family: monospace;
+      font-size: 21px;
+      font-weight: bold;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .back {
+      color: var(--muted);
+      font-family: monospace;
+      font-size: 11px;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      color: var(--green);
+    }
+
+    .article {
+      padding: 65px 0 90px;
+    }
+
+    .category {
+      color: var(--green);
+      font-family: monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 7vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .meta {
+      color: var(--green);
+      font-family: monospace;
+      font-size: 10px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 15px 0;
+      margin-bottom: 42px;
+    }
+
+    .article-body h2 {
+      font-size: 24px;
+      margin: 38px 0 14px;
+      line-height: 1.4;
+    }
+
+    .article-body p {
+      color: #bdc9c0;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .article-body blockquote {
+      border-left: 2px solid var(--green);
+      background: var(--surface);
+      padding: 20px;
+      margin: 30px 0;
+      color: var(--green);
+      font-size: 17px;
+    }
+
+    .article-body strong {
+      color: var(--text);
+    }
+
+    .end-note {
+      border-top: 1px solid var(--border);
+      margin-top: 55px;
+      padding-top: 25px;
+      color: var(--muted);
+      font-family: monospace;
+      font-size: 11px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-family: monospace;
+      font-size: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    footer span:last-child {
+      color: var(--green);
+    }
+
+    @media (max-width: 600px) {
+      .article {
+        padding-top: 45px;
+      }
+
+      .article-body p {
+        font-size: 15px;
+      }
+
+      .article-body h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <a href="../index.html" class="logo">GoatLog.</a>
+      <a href="../index.html" class="back">← BACK TO ARCHIVE</a>
+    </header>
+
+    <main class="article">
+
+      <div class="category">
+        PSYCHOLOGY / HUMAN BEHAVIOR
+      </div>
+
+      <h1>The Architecture of Fear</h1>
+
+      <p class="subtitle">
+        How fear shapes perception, influences decisions,
+        and quietly defines the boundaries of human behavior.
+      </p>
+
+      <div class="meta">
+        GOATLOG / ARTICLE 001 / 8 MIN READ
+      </div>
+
+      <div class="article-body">
+
+        <p>
+          Fear is usually understood as an emotional response
+          to danger. Something threatens us, the mind detects
+          the threat, and the body prepares to respond.
+          But this explanation describes only the surface.
+        </p>
+
+        <p>
+          Fear can also influence how people interpret reality,
+          evaluate opportunities, build relationships,
+          and make decisions about their future.
+          It does not always stop movement. Sometimes,
+          it determines the direction of movement.
+        </p>
+
+        <h2>01. Fear Begins With Perception</h2>
+
+        <p>
+          Human beings do not respond only to events.
+          They also respond to what they believe those
+          events mean.
+        </p>
+
+        <p>
+          An uncertain situation may be interpreted as
+          an opportunity by one person and as a threat
+          by another. The external situation may be
+          identical, but their internal interpretations
+          are different.
+        </p>
+
+        <p>
+          This distinction matters because perception
+          influences emotion, and emotion can influence
+          behavior.
+        </p>
+
+        <blockquote>
+          The mind does not simply observe reality.
+          It interprets reality before deciding how to respond.
+        </blockquote>
+
+        <h2>02. The Hidden Cost of Avoidance</h2>
+
+        <p>
+          Avoidance often provides immediate relief.
+          A difficult conversation is postponed.
+          A challenging opportunity is rejected.
+          A necessary decision is delayed.
+        </p>
+
+        <p>
+          The discomfort temporarily disappears.
+          This relief can reinforce the habit of avoidance,
+          making the same response more likely the next time.
+        </p>
+
+        <p>
+          Over time, a person may begin to confuse
+          the absence of discomfort with genuine safety.
+          Yet avoiding every uncertain situation can
+          also mean avoiding learning, change and growth.
+        </p>
+
+        <h2>03. Fear and the Illusion of Control</h2>
+
+        <p>
+          When uncertainty becomes uncomfortable,
+          people may attempt to control everything:
+          outcomes, other people's opinions,
+          future events and even situations
+          that are fundamentally unpredictable.
+        </p>
+
+        <p>
+          Preparation is useful. Awareness is useful.
+          But the desire for absolute certainty can
+          become another source of anxiety.
+        </p>
+
+        <p>
+          Mature decision-making does not require
+          the elimination of uncertainty. It requires
+          learning how to act responsibly despite it.
+        </p>
+
+        <h2>04. Understanding Fear Without Obeying It</h2>
+
+        <p>
+          Fear is not always an enemy. It can signal
+          real danger, reveal personal boundaries
+          and encourage careful thinking.
+        </p>
+
+        <p>
+          The objective is not to become fearless.
+          It is to distinguish between a useful warning
+          and an automatic reaction that deserves
+          closer examination.
+        </p>
+
+        <p>
+          Ask yourself:
+          What exactly am I afraid of?
+          What evidence supports this expectation?
+          What is within my control?
+          And what might happen if I allow fear
+          to make this decision for me?
+        </p>
+
+        <h2>Final Thought</h2>
+
+        <p>
+          Understanding fear begins with observing it.
+          Not denying it, not blindly following it,
+          and not allowing every uncomfortable feeling
+          to become an instruction.
+        </p>
+
+        <p>
+          The ability to examine your own reactions
+          creates space between what you feel
+          and what you choose to do.
+        </p>
+
+        <p>
+          That space is where more deliberate
+          decisions become possible.
+        </p>
+
+      </div>
+
+      <div class="end-note">
+        END OF ARTICLE_001<br><br>
+        GOATLOG // THINK DEEPER. BECOME STRONGER.
+      </div>
+
+    </main>
+
+    <footer>
+      <span>INDEPENDENT KNOWLEDGE ARCHIVE</span>
+      <span>© GOATLOG 2026</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
