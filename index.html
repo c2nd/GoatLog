@@ -2,307 +2,617 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#050807">
-<title>GoatLog</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b09">
 
-<style>
-:root {
-  --bg: #050807;
-  --panel: #0b1210;
-  --green: #00ff9c;
-  --muted: #84938b;
-  --border: #183328;
-}
+  <meta name="description" content="GoatLog — An independent archive exploring psychology, philosophy, human nature and personal development.">
 
-* { box-sizing: border-box; }
+  <title>GoatLog — Think Deeper. Become Stronger.</title>
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: #e7fff1;
-  font-family: monospace;
-  min-height: 100vh;
-  padding: 22px 16px;
-  background-image:
-    linear-gradient(#00ff9c08 1px, transparent 1px),
-    linear-gradient(90deg,#00ff9c08 1px,transparent 1px);
-  background-size: 30px 30px;
-}
+  <style>
+    :root {
+      --bg: #070b09;
+      --surface: #0d1511;
+      --surface-light: #111d16;
+      --green: #00ff9c;
+      --green-soft: #8bffc9;
+      --text: #e8f5ed;
+      --muted: #87958c;
+      --border: #1b3528;
+    }
 
-.container {
-  max-width: 680px;
-  margin: auto;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 16px;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.logo {
-  color: var(--green);
-  font-size: 19px;
-  font-weight: bold;
-  letter-spacing: 3px;
-}
+    body {
+      min-height: 100vh;
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(#00ff9c08 1px, transparent 1px),
+        linear-gradient(90deg, #00ff9c08 1px, transparent 1px);
+      background-size: 36px 36px;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
 
-.status {
-  color: var(--green);
-  font-size: 11px;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.hero {
-  padding: 48px 0 30px;
-}
+    button {
+      font: inherit;
+    }
 
-.tag {
-  color: var(--green);
-  font-size: 11px;
-  letter-spacing: 2px;
-}
+    .container {
+      width: min(100% - 36px, 920px);
+      margin: auto;
+    }
 
-h1 {
-  font-size: clamp(34px, 9vw, 52px);
-  margin: 15px 0;
-  letter-spacing: -2px;
-}
+    /* HEADER */
 
-h1 span { color: var(--green); }
+    header {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
 
-.description {
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: 13px;
-}
+    .logo {
+      font-family: monospace;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--green);
+    }
 
-.clock {
-  color: var(--green);
-  font-size: 14px;
-  margin-top: 22px;
-}
+    .system-status {
+      font-family: monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--green);
+    }
 
-nav {
-  display: flex;
-  gap: 7px;
-  overflow-x: auto;
-  padding-bottom: 15px;
-}
+    .status-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      margin-right: 6px;
+      box-shadow: 0 0 10px var(--green);
+    }
 
-nav button {
-  flex: 1;
-  min-width: 85px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 12px 8px;
-  font-family: inherit;
-  cursor: pointer;
-}
+    /* NAVIGATION */
 
-nav button.active,
-nav button:hover {
-  color: var(--green);
-  border-color: var(--green);
-}
+    nav {
+      display: flex;
+      gap: 28px;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
 
-.panel {
-  display: none;
-  border: 1px solid var(--border);
-  background: #09100df2;
-  padding: 20px;
-  min-height: 260px;
-}
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: monospace;
+      font-size: 12px;
+      letter-spacing: 1px;
+      padding: 5px 0;
+      transition: 0.2s;
+    }
 
-.panel.active { display: block; }
+    .nav-btn:hover,
+    .nav-btn.active {
+      color: var(--green);
+    }
 
-.panel h2 {
-  color: var(--green);
-  font-size: 17px;
-  margin-top: 0;
-}
+    .nav-btn.active {
+      border-bottom: 1px solid var(--green);
+    }
 
-.panel p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
-}
+    /* HERO */
 
-.item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid var(--border);
-  padding: 14px;
-  margin-top: 10px;
-  color: #d9f9e7;
-  text-decoration: none;
-  font-size: 13px;
-  transition: .2s;
-}
+    .hero {
+      padding: 78px 0 65px;
+      border-bottom: 1px solid var(--border);
+    }
 
-.item:hover {
-  border-color: var(--green);
-  color: var(--green);
-}
+    .eyebrow {
+      color: var(--green);
+      font-family: monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 22px;
+    }
 
-.arrow { color: var(--green); }
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
 
-footer {
-  margin-top: 35px;
-  padding: 18px 0;
-  border-top: 1px solid var(--border);
-  color: #66756d;
-  font-size: 10px;
-  text-align: center;
-  letter-spacing: 2px;
-}
+    .hero h1 span {
+      color: var(--green);
+    }
 
-</style>
+    .hero-description {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 560px;
+      line-height: 1.9;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 35px;
+      font-family: monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .hero-bottom strong {
+      color: var(--green);
+      font-weight: normal;
+    }
+
+    /* MAIN CONTENT */
+
+    .content-section {
+      display: none;
+      padding: 55px 0 70px;
+      animation: appear 0.35s ease;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-family: monospace;
+      font-size: 17px;
+      color: var(--green);
+      letter-spacing: 1px;
+    }
+
+    .section-heading span {
+      font-family: monospace;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    /* ARTICLE CARDS */
+
+    .article-card {
+      background: linear-gradient(
+        135deg,
+        var(--surface),
+        #09100c
+      );
+      border: 1px solid var(--border);
+      padding: 25px;
+      margin-bottom: 15px;
+      transition: 0.25s;
+    }
+
+    .article-card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px #00ff9c0b;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--green);
+      font-family: monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .article-card h3 {
+      font-size: clamp(20px, 4vw, 26px);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .article-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+      max-width: 650px;
+    }
+
+    .article-status {
+      display: inline-block;
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 5px 10px;
+      font-family: monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    /* ABOUT */
+
+    .about-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px;
+      margin-bottom: 18px;
+    }
+
+    .about-box h3 {
+      color: var(--green);
+      font-family: monospace;
+      font-size: 14px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .principle {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      padding: 15px;
+      color: var(--green-soft);
+      font-family: monospace;
+      font-size: 11px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      font-family: monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    footer strong {
+      color: var(--green);
+      font-weight: normal;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 30px, 920px);
+      }
+
+      header {
+        height: 65px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .system-status {
+        font-size: 8px;
+      }
+
+      .hero {
+        padding: 58px 0 45px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-bottom {
+        font-size: 9px;
+      }
+
+      .content-section {
+        padding: 40px 0 55px;
+      }
+
+      .article-card {
+        padding: 19px;
+      }
+
+      .about-box {
+        padding: 20px;
+      }
+
+      .principles {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        font-size: 9px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="container">
 
-<header>
-  <div class="logo">CYBER.HUB</div>
-  <div class="status">● SYSTEM ONLINE</div>
-</header>
+  <div class="container">
 
-<section class="hero">
-  <div class="tag">// PERSONAL DIGITAL SPACE</div>
-  <h1>Beyond <span>Limits.</span></h1>
-  <p class="description">
-    Welcome to my digital environment.
-    Explore tools, knowledge, resources and
-    selected destinations.
-  </p>
-  <div class="clock" id="clock">00:00:00</div>
-</section>
+    <header>
+      <a href="#" class="logo">GoatLog<span>.</span></a>
 
-<nav>
-  <button class="active" data-tab="home">01 / HOME</button>
-  <button data-tab="tools">02 / TOOLS</button>
-  <button data-tab="network">03 / NETWORK</button>
-  <button data-tab="about">04 / ABOUT</button>
-</nav>
+      <div class="system-status">
+        <span class="status-dot"></span>
+        ARCHIVE ONLINE
+      </div>
+    </header>
 
-<section id="home" class="panel active">
-  <h2>01. DASHBOARD</h2>
-  <p>System initialized. Select a destination.</p>
+    <nav aria-label="Main navigation">
+      <button class="nav-btn active"
+              data-target="articles"
+              aria-current="page">
+        01 / ARTICLES
+      </button>
 
-  <a class="item" href="#tools"
-     onclick="showTab('tools')">
-    Explore resources <span class="arrow">↗</span>
-  </a>
+      <button class="nav-btn"
+              data-target="about">
+        02 / ABOUT
+      </button>
+    </nav>
 
-  <a class="item" href="#network"
-     onclick="showTab('network')">
-    Open network <span class="arrow">↗</span>
-  </a>
-</section>
+    <section class="hero">
+      <div class="eyebrow">
+        // HUMAN DEVELOPMENT ARCHIVE
+      </div>
 
-<section id="tools" class="panel">
-  <h2>02. DIGITAL RESOURCES</h2>
-  <p>Selected tools and platforms.</p>
+      <h1>
+        Think Deeper.<br>
+        <span>Become Stronger.</span>
+      </h1>
 
-  <a class="item"
-     href="https://github.com/" target="_blank">
-    GitHub <span class="arrow">↗</span>
-  </a>
+      <p class="hero-description">
+        An independent archive exploring the architecture
+        of human behavior, psychology, philosophy,
+        consciousness and personal development.
+      </p>
 
-  <a class="item"
-     href="https://termux.dev/" target="_blank">
-    Termux <span class="arrow">↗</span>
-  </a>
+      <div class="hero-bottom">
+        <span>EST. 2026 / INDEPENDENT PROJECT</span>
+        <strong>GOATLOG_001</strong>
+      </div>
+    </section>
 
-  <a class="item"
-     href="https://www.kali.org/" target="_blank">
-    Kali Linux <span class="arrow">↗</span>
-  </a>
+    <main>
 
-  <a class="item"
-     href="https://developer.mozilla.org/" target="_blank">
-    MDN Web Docs <span class="arrow">↗</span>
-  </a>
-</section>
+      <!-- ARTICLES -->
 
-<section id="network" class="panel">
-  <h2>03. NETWORK</h2>
-  <p>External destinations and online communities.</p>
+      <section id="articles"
+               class="content-section active">
 
-  <a class="item"
-     href="https://x.com/" target="_blank">
-    X / Social Network <span class="arrow">↗</span>
-  </a>
+        <div class="section-heading">
+          <h2>THE ARTICLES</h2>
+          <span>THE KNOWLEDGE ARCHIVE</span>
+        </div>
 
-  <a class="item"
-     href="https://stackoverflow.com/" target="_blank">
-    Stack Overflow <span class="arrow">↗</span>
-  </a>
+        <article class="article-card">
+          <div class="article-meta">
+            <span>01 / PSYCHOLOGY</span>
+            <span>COMING SOON</span>
+          </div>
 
-  <a class="item"
-     href="https://www.reddit.com/" target="_blank">
-    Reddit <span class="arrow">↗</span>
-  </a>
-</section>
+          <h3>The Architecture of Fear</h3>
 
-<section id="about" class="panel">
-  <h2>04. ABOUT THIS PROJECT</h2>
-  <p>
-    CYBER HUB is an independent personal
-    digital space built with HTML, CSS and JavaScript.
-  </p>
-  <p>VERSION: 1.0.0</p>
-  <p>HOST: GITHUB PAGES</p>
-  <p>ACCESS: PUBLIC</p>
-</section>
+          <p>
+            An exploration of how fear shapes human decisions,
+            influences behavior and silently controls the
+            boundaries of our everyday lives.
+          </p>
 
-<footer>
-  CYBER HUB // INDEPENDENT DIGITAL SPACE
-  <br><br>
-  © 2026
-</footer>
+          <span class="article-status">
+            ARTICLE IN DEVELOPMENT
+          </span>
+        </article>
 
-</div>
+        <article class="article-card">
+          <div class="article-meta">
+            <span>02 / HUMAN NATURE</span>
+            <span>COMING SOON</span>
+          </div>
 
-<script>
-function showTab(id) {
-  document.querySelectorAll('.panel')
-    .forEach(p => p.classList.remove('active'));
+          <h3>The Psychology of Power</h3>
 
-  document.querySelectorAll('nav button')
-    .forEach(b => b.classList.remove('active'));
+          <p>
+            Understanding influence, authority, human
+            weaknesses and the psychological structures
+            behind the desire for power.
+          </p>
 
-  document.getElementById(id)
-    .classList.add('active');
+          <span class="article-status">
+            ARTICLE IN DEVELOPMENT
+          </span>
+        </article>
 
-  const btn = document.querySelector(
-    'nav button[data-tab="' + id + '"]'
-  );
+        <article class="article-card">
+          <div class="article-meta">
+            <span>03 / PHILOSOPHY</span>
+            <span>COMING SOON</span>
+          </div>
 
-  if (btn) btn.classList.add('active');
-}
+          <h3>The Discipline of the Mind</h3>
 
-document.querySelectorAll('nav button')
-  .forEach(button => {
-    button.addEventListener('click', () => {
-      showTab(button.dataset.tab);
+          <p>
+            A deeper look at self-control, attention,
+            mental clarity and the difficult process
+            of mastering one's own behavior.
+          </p>
+
+          <span class="article-status">
+            ARTICLE IN DEVELOPMENT
+          </span>
+        </article>
+
+      </section>
+
+      <!-- ABOUT -->
+
+      <section id="about"
+               class="content-section">
+
+        <div class="section-heading">
+          <h2>ABOUT GOATLOG</h2>
+          <span>PROJECT INFORMATION</span>
+        </div>
+
+        <div class="about-box">
+          <h3>// WHAT IS GOATLOG?</h3>
+
+          <p>
+            GoatLog is an independent knowledge archive
+            dedicated to exploring the human mind,
+            behavior, philosophy and the potential
+            of personal development.
+            <br><br>
+            It is a place for ideas that challenge
+            assumptions, question ordinary thinking
+            and encourage a deeper understanding
+            of ourselves and the world around us.
+          </p>
+        </div>
+
+        <div class="about-box">
+          <h3>// OUR DIRECTION</h3>
+
+          <p>
+            We focus on depth over quantity,
+            critical thinking over blind acceptance,
+            and understanding over superficial motivation.
+          </p>
+
+          <div class="principles">
+            <div class="principle">01 / PSYCHOLOGY</div>
+            <div class="principle">02 / PHILOSOPHY</div>
+            <div class="principle">03 / HUMAN NATURE</div>
+            <div class="principle">04 / SELF-MASTERY</div>
+            <div class="principle">05 / STRATEGIC THINKING</div>
+            <div class="principle">06 / HUMAN POTENTIAL</div>
+          </div>
+        </div>
+
+        <div class="about-box">
+          <h3>// PROJECT STATUS</h3>
+
+          <p>
+            Version: 1.0<br>
+            Platform: GitHub Pages<br>
+            Status: Initial development<br>
+            Updates: More content and features will be
+            introduced gradually.
+          </p>
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer>
+      <span>GOATLOG // THINK INDEPENDENTLY</span>
+      <strong>© 2026 GOATLOG</strong>
+    </footer>
+
+  </div>
+
+  <script>
+    const navButtons = document.querySelectorAll(".nav-btn");
+    const sections = document.querySelectorAll(".content-section");
+
+    function openSection(target) {
+      sections.forEach(section => {
+        section.classList.toggle(
+          "active",
+          section.id === target
+        );
+      });
+
+      navButtons.forEach(button => {
+        const selected = button.dataset.target === target;
+
+        button.classList.toggle("active", selected);
+
+        if (selected) {
+          button.setAttribute("aria-current", "page");
+        } else {
+          button.removeAttribute("aria-current");
+        }
+      });
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    navButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        openSection(button.dataset.target);
+      });
     });
-  });
-
-function updateClock() {
-  document.getElementById('clock')
-    .textContent = new Date().toLocaleTimeString('en-GB');
-}
-
-updateClock();
-setInterval(updateClock, 1000);
-</script>
+  </script>
 
 </body>
 </html>
