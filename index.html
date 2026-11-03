@@ -1,21 +1,216 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOLIO — The Monochrome Journal</title>
-    <meta name="description" content="An editorial publication dedicated to architectural theory, minimalist industrial design, typography, and contemporary culture." />
-    <meta property="og:title" content="FOLIO — The Monochrome Journal" />
-    <meta property="og:description" content="An editorial publication dedicated to architectural theory, minimalist industrial design, typography, and contemporary culture." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  </head>
-  <body class="bg-[#FAFAFA] text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white dark:bg-[#121212] dark:text-neutral-100">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدونتي — أفكار ومقالات</title>
+<meta name="description" content="مدونة شخصية فيها مقالات وأفكار عن التقنية والتصميم والحياة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f2ee; --surface:#ffffff; --text:#171614; --muted:#6b6660;
+  --border:#e6e2db; --link:#8a5a3b;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f0e0d; --surface:#1a1816; --text:#f2efe9; --muted:#9c958d;
+    --border:#2a2724; --link:#d1a17f;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.2);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;
+  background:var(--bg); color:var(--text);
+  line-height:1.75; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
 
+/* Header */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  background:color-mix(in srgb,var(--bg) 85%,transparent);
+  backdrop-filter:saturate(180%) blur(12px);
+  -webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  max-width:780px; margin:0 auto;
+  padding:14px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{font-weight:700; font-size:1.15rem; letter-spacing:-.01em}
+.brand span{color:var(--link)}
+.nav{display:flex; gap:18px; font-size:.9rem; color:var(--muted)}
+.nav a{transition:color .2s}
+.nav a:hover{color:var(--text)}
+
+.container{max-width:780px; margin:0 auto; padding:0 20px}
+
+/* Hero */
+.hero{padding:56px 0 40px; border-bottom:1px solid var(--border)}
+.hero h1{
+  font-size:clamp(1.8rem,5vw,2.6rem);
+  font-weight:700; letter-spacing:-.02em; line-height:1.25;
+  margin-bottom:14px;
+}
+.hero p{color:var(--muted); font-size:1.02rem; max-width:540px}
+
+/* Section title */
+.section-title{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:36px 0 20px;
+}
+.section-title h2{font-size:1.1rem; font-weight:600; letter-spacing:-.01em}
+.section-title small{color:var(--muted); font-size:.82rem}
+
+/* Cards */
+.post-list{display:grid; gap:18px; padding-bottom:20px}
+.post-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  transition:transform .2s ease, box-shadow .25s ease, border-color .2s;
+  box-shadow:var(--shadow);
+}
+.post-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 1px 2px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.08);
+}
+.post-meta{
+  font-size:.78rem; color:var(--muted);
+  display:flex; gap:10px; align-items:center; margin-bottom:10px;
+  letter-spacing:.02em;
+}
+.post-meta .dot{width:3px;height:3px;background:var(--muted);border-radius:50%}
+.post-card h3{
+  font-size:1.2rem; font-weight:600; letter-spacing:-.01em; line-height:1.4;
+  margin-bottom:10px;
+}
+.post-card h3 a{transition:color .2s}
+.post-card h3 a:hover{color:var(--link)}
+.post-card p{color:var(--muted); font-size:.94rem; line-height:1.65}
+.read-more{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:16px; font-size:.86rem; font-weight:500;
+  color:var(--link);
+}
+.read-more::after{content:"←"; transition:transform .2s}
+.read-more:hover::after{transform:translateX(-4px)}
+
+/* Ad slot */
+.ad-slot{
+  margin:24px 0;
+  min-height:90px;
+  display:flex; align-items:center; justify-content:center;
+  background:color-mix(in srgb,var(--surface) 70%,var(--bg));
+  border:1px dashed var(--border);
+  border-radius:var(--radius);
+  color:var(--muted); font-size:.78rem; letter-spacing:.08em;
+}
+
+/* Footer */
+.site-footer{
+  margin-top:60px;
+  border-top:1px solid var(--border);
+  padding:32px 0 60px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.85rem;
+}
+.site-footer .brand{margin-bottom:8px; display:inline-block}
+
+@media (max-width:480px){
+  .hero{padding:40px 0 32px}
+  .post-card{padding:20px}
+  .nav{gap:14px; font-size:.85rem}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">مدونة<span>.</span></a>
+    <nav class="nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="#about">حول</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container">
+    <h1>أفكار ومقالات قصيرة،<br>بلغة واضحة وعقل منفتح.</h1>
+    <p>مساحة شخصية أكتب فيها عن التقنية والتصميم والحياة اليومية. محتوى أصلي، بلا ضجيج.</p>
+  </section>
+
+  <section class="container">
+    <div class="section-title">
+      <h2>أحدث المقالات</h2>
+      <small>3 مقالات</small>
+    </div>
+
+    <div class="post-list">
+
+      <article class="post-card">
+        <div class="post-meta">
+          <time datetime="2026-11-03">3 نوفمبر 2026</time>
+          <span class="dot"></span>
+          <span>تقنية</span>
+        </div>
+        <h3><a href="post-1.html">كيف تبني موقعاً آمناً بالكامل من هاتفك</a></h3>
+        <p>دليل عملي مختصر يشرح كيف يمكنك إنشاء موقع ثابت، نشره مجاناً، والربح منه دون الحاجة إلى حاسوب.</p>
+        <a href="post-1.html" class="read-more">اقرأ المزيد</a>
+      </article>
+
+      <!-- 🔽 AD SLOT — ضع كود Adsterra هنا 🔽 -->
+      <div class="ad-slot" aria-hidden="true">
+        مساحة إعلانية
+        <!-- <script type="text/javascript"> ... كود Adsterra ... </script> -->
+      </div>
+      <!-- 🔼 نهاية مكان الإعلان 🔼 -->
+
+      <article class="post-card">
+        <div class="post-meta">
+          <time datetime="2026-11-01">1 نوفمبر 2026</time>
+          <span class="dot"></span>
+          <span>تصميم</span>
+        </div>
+        <h3><a href="post-2.html">ألوان حيادية، هوية بصرية قوية</a></h3>
+        <p>لماذا تبدو بعض المدونات أنيقة رغم بساطتها؟ الفرق يكمن في اختيار لوحة ألوان محدودة واستخدام المساحات البيضاء بذكاء.</p>
+        <a href="post-2.html" class="read-more">اقرأ المزيد</a>
+      </article>
+
+      <article class="post-card">
+        <div class="post-meta">
+          <time datetime="2026-10-28">28 أكتوبر 2026</time>
+          <span class="dot"></span>
+          <span>أفكار</span>
+        </div>
+        <h3><a href="post-3.html">الكتابة اليومية: أقل مما تظن، وأكثر مما تتخيل</a></h3>
+        <p>عشر دقائق من الكتابة كل صباح كافية لترتيب أفكارك واكتشاف ما تفكر فيه فعلاً. جرّبها لأسبوع وستلاحظ الفرق.</p>
+        <a href="post-3.html" class="read-more">اقرأ المزيد</a>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="about">
+  <div class="container">
+    <a href="index.html" class="brand">مدونة<span>.</span></a>
+    <p>© 2026 جميع الحقوق محفوظة. صُنع بشغف، من هاتف فقط.</p>
+  </div>
+</footer>
+
+</body>
+</html>
